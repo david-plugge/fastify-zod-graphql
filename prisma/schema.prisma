@@ -18,13 +18,14 @@ model User {
   username  String @unique
   firstname String
   lastname  String
-  Post      Post[]
+  posts     Post[]
 }
 
 model Post {
-  id      BigInt @id @default(autoincrement())
-  title   String
-  content String
-  owner   User   @relation(fields: [ownerId], references: [id])
-  ownerId String
+  id        BigInt  @id @default(autoincrement())
+  title     String
+  body      String
+  published Boolean @default(false)
+  owner     User    @relation(fields: [ownerId], references: [id])
+  ownerId   String
 }

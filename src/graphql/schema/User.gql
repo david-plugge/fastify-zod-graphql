@@ -1,0 +1,12 @@
+type User {
+    id: ID!
+    username: String!
+    firstname: String!
+    lastname: String!
+    posts: [Post]
+}
+input CreateUserInput {
+    username: String!
+    firstname: String!
+    lastname: String!
+}

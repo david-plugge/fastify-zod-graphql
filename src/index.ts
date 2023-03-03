@@ -2,7 +2,6 @@ import fastify from 'fastify';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUI from '@fastify/swagger-ui';
 import fastifyAutoload from '@fastify/autoload';
-
 import {
     jsonSchemaTransform,
     // createJsonSchemaTransform,
@@ -10,48 +9,47 @@ import {
     validatorCompiler,
 } from 'fastify-type-provider-zod';
 import prisma from './plugins/prisma';
-import mercurius from 'mercurius';
-import schema from './graphql/schema';
-import resolvers from './graphql/resolvers';
+import graphql from './plugins/graphql';
+import env from './plugins/env';
 
 const app = fastify();
-app.setValidatorCompiler(validatorCompiler);
-app.setSerializerCompiler(serializerCompiler);
 
-app.register(fastifySwagger, {
-    openapi: {
-        info: {
-            title: 'SampleApi',
-            description: 'Sample backend service',
-            version: '1.0.0',
+app.register(env);
+app.register(graphql);
+
+app.register(async (app) => {
+    app.setValidatorCompiler(validatorCompiler);
+    app.setSerializerCompiler(serializerCompiler);
+
+    app.register(fastifySwagger, {
+        openapi: {
+            info: {
+                title: 'SampleApi',
+                description: 'Sample backend service',
+                version: '1.0.0',
+            },
+            servers: [],
         },
-        servers: [],
-    },
-    transform: jsonSchemaTransform,
-    // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
-    //
-    // transform: createJsonSchemaTransform({
-    //   skipList: [ '/documentation/static/*' ]
-    // })
-});
+        transform: jsonSchemaTransform,
+        // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
+        //
+        // transform: createJsonSchemaTransform({
+        //   skipList: [ '/documentation/static/*' ]
+        // })
+    });
 
-app.register(fastifySwaggerUI, {
-    routePrefix: '/documentation',
-});
+    app.register(fastifySwaggerUI, {
+        routePrefix: '/documentation',
+    });
 
-app.register(prisma);
+    app.register(prisma);
 
-app.register(fastifyAutoload, {
-    dir: __dirname + '/modules',
-    matchFilter(path) {
-        return path.endsWith('router.ts');
-    },
-});
-
-app.register(mercurius, {
-    schema,
-    resolvers,
-    graphiql: true,
+    app.register(fastifyAutoload, {
+        dir: __dirname + '/modules',
+        matchFilter(path) {
+            return path.endsWith('router.ts');
+        },
+    });
 });
 
 async function run() {
