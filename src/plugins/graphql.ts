@@ -1,12 +1,15 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
 import { buildSchema } from 'graphql';
-import mercurius, { MercuriusContext } from 'mercurius';
+import mercurius from 'mercurius';
 import {
     codegenMercurius,
     CodegenMercuriusOptions,
     loadSchemaFiles,
 } from 'mercurius-codegen';
+import mercuriusAuth from 'mercurius-auth';
+import mercuriusCache from 'mercurius-cache';
+import mercuriusValidation from 'mercurius-validation';
 import resolvers from '../graphql/resolvers';
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
@@ -35,7 +38,7 @@ export default fastifyPlugin(async (app) => {
     const { schema } = loadSchemaFiles('src/graphql/schema/**/*.gql', {
         watchOptions: {
             enabled: app.env.dev,
-            onChange(schema) {
+            async onChange(schema) {
                 app.graphql.replaceSchema(buildSchema(schema.join('\n')));
                 app.graphql.defineResolvers(resolvers);
 
@@ -47,11 +50,31 @@ export default fastifyPlugin(async (app) => {
     });
 
     await app.register(mercurius, {
-        schema,
+        schema: `${mercuriusValidation.graphQLTypeDefs}\n\n${schema}`,
         resolvers,
         context: buildContext,
         graphiql: true,
+        allowBatchedQueries: true,
+        subscription: true,
     });
 
-    codegenMercurius(app, codegenMercuriusOptions).catch(console.error);
+    if (app.env.dev) {
+        codegenMercurius(app, codegenMercuriusOptions).catch(console.error);
+    }
+
+    app.register(mercuriusAuth, {
+        authContext(context) {
+            return {
+                identity: context.reply.request.headers['x-user'],
+            };
+        },
+        async applyPolicy(authDirectiveAST, parent, args, context, info) {
+            return (context.auth ??= {}).identity === 'admin';
+        },
+        authDirective: 'auth',
+    });
+    app.register(mercuriusValidation);
+    app.register(mercuriusCache, {
+        policy: {},
+    });
 });

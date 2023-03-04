@@ -3,45 +3,53 @@ lockfileVersion: 5.4
 specifiers:
   '@fastify/autoload': ^5.7.1
   '@fastify/swagger': ^8.3.1
-  '@fastify/swagger-ui': ^1.4.0
+  '@fastify/swagger-ui': ^1.5.0
   '@graphql-tools/load-files': ^6.6.1
   '@graphql-typed-document-node/core': ^3.1.2
   '@prisma/client': ^4.11.0
-  '@types/node': ^18.14.5
-  fastify: ^4.13.0
+  '@types/node': ^18.14.6
+  '@types/pg': ^8.6.6
+  fastify: ^4.14.0
   fastify-plugin: 4.5.0
   fastify-type-provider-zod: ^1.1.9
   graphql: ^16.6.0
   mercurius: ^12.2.0
+  mercurius-auth: ^4.0.0
+  mercurius-cache: ^4.0.0
   mercurius-codegen: ^5.0.1
+  mercurius-validation: ^4.0.0
   nodemon: ^2.0.21
   prettier: ^2.8.4
   prisma: ^4.11.0
   ts-node: ^10.9.1
   typescript: ^4.9.5
-  zod: ^3.20.6
+  zod: ^3.21.0
 
 dependencies:
   '@fastify/autoload': 5.7.1
   '@fastify/swagger': 8.3.1
-  '@fastify/swagger-ui': 1.4.0
+  '@fastify/swagger-ui': 1.5.0
   '@graphql-tools/load-files': 6.6.1_graphql@16.6.0
   '@prisma/client': 4.11.0_prisma@4.11.0
-  fastify: 4.13.0
+  fastify: 4.14.0
   fastify-plugin: 4.5.0
-  fastify-type-provider-zod: 1.1.9_fastify@4.13.0+zod@3.20.6
+  fastify-type-provider-zod: 1.1.9_fastify@4.14.0+zod@3.21.0
   graphql: 16.6.0
   mercurius: 12.2.0_graphql@16.6.0
-  mercurius-codegen: 5.0.1_ip7hdpsvawckbwarjuwspen7hq
-  zod: 3.20.6
+  mercurius-auth: 4.0.0
+  mercurius-cache: 4.0.0
+  mercurius-codegen: 5.0.1_zvtaexhrdrbkgyiw3e45iaw26e
+  mercurius-validation: 4.0.0
+  zod: 3.21.0
 
 devDependencies:
   '@graphql-typed-document-node/core': 3.1.2_graphql@16.6.0
-  '@types/node': 18.14.5
+  '@types/node': 18.14.6
+  '@types/pg': 8.6.6
   nodemon: 2.0.21
   prettier: 2.8.4
   prisma: 4.11.0
-  ts-node: 10.9.1_2cogyjchoknpkalymtikkc6nay
+  ts-node: 10.9.1_alpjt73dvgv6kni625hu7f2l4m
   typescript: 4.9.5
 
 packages:
@@ -704,8 +712,8 @@ packages:
       readable-stream: 4.3.0
     dev: false
 
-  /@fastify/swagger-ui/1.4.0:
-    resolution: {integrity: sha512-ySbXbgH2TPyB97Mqc3Yd65XRDxK5A3Jwqmqe30Ix1Auyx/+YYOk+n5I/RxHUl6AFDrYrYY/Y5DJoi7/EXeonGQ==}
+  /@fastify/swagger-ui/1.5.0:
+    resolution: {integrity: sha512-wumG3RcYhhRpn0wjPMqOC96WNRVAj2lA4V4yDLqwC/hzwIinXzfuwSma+uAe2DhqoHHirk/dAannupsycrp1PA==}
     dependencies:
       '@fastify/static': 6.9.0
       fastify-plugin: 4.5.0
@@ -900,7 +908,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /@graphql-tools/relay-operation-optimizer/6.5.17_graphql@16.6.0:
@@ -911,7 +919,7 @@ packages:
       '@ardatan/relay-compiler': 12.0.0_graphql@16.6.0
       '@graphql-tools/utils': 9.2.1_graphql@16.6.0
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -935,7 +943,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /@graphql-tools/utils/9.2.1_graphql@16.6.0:
@@ -1062,8 +1070,16 @@ packages:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
 
-  /@types/node/18.14.5:
-    resolution: {integrity: sha512-CRT4tMK/DHYhw1fcCEBwME9CSaZNclxfzVMe7GsO6ULSwsttbj70wSiX6rZdIjGblu93sTJxLdhNIT85KKI7Qw==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
+    dev: true
+
+  /@types/pg/8.6.6:
+    resolution: {integrity: sha512-O2xNmXebtwVekJDD+02udOncjVcMZQuTEQEMpKJ0ZRf5E7/9JJX3izhKUcUifBkyKpljyUM6BTgy2trmviKlpw==}
+    dependencies:
+      '@types/node': 18.14.6
+      pg-protocol: 1.6.0
+      pg-types: 2.2.0
     dev: true
 
   /abbrev/1.1.1:
@@ -1098,6 +1114,14 @@ packages:
     dependencies:
       clean-stack: 2.2.0
       indent-string: 4.0.0
+    dev: false
+
+  /ajv-errors/3.0.0_ajv@8.12.0:
+    resolution: {integrity: sha512-V3wD15YHfHz6y0KdhYFjyy9vWtEVALT9UrxfN3zqlI6dMioHnJrqOYfyPKol3oqrnCM9uwkcdCwkJ0WUcbLMTQ==}
+    peerDependencies:
+      ajv: ^8.0.1
+    dependencies:
+      ajv: 8.12.0
     dev: false
 
   /ajv-formats/2.1.1:
@@ -1168,6 +1192,13 @@ packages:
 
   /asap/2.0.6:
     resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
+    dev: false
+
+  /async-cache-dedupe/1.10.0:
+    resolution: {integrity: sha512-81j/OLVNjD5Lf+ct0JoFsHfOrR+01dAaZz2dMI1hI+9bAFfZG0JucP8ysv8W0kaCDL8n5YmOdXKvNCIKTndhQQ==}
+    dependencies:
+      mnemonist: 0.39.5
+      safe-stable-stringify: 2.4.2
     dev: false
 
   /atomic-sleep/1.0.0:
@@ -1266,7 +1297,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001460
-      electron-to-chromium: 1.4.317
+      electron-to-chromium: 1.4.320
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: false
@@ -1295,7 +1326,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /camelcase/5.3.1:
@@ -1311,7 +1342,7 @@ packages:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
       upper-case-first: 2.0.2
     dev: false
 
@@ -1376,7 +1407,7 @@ packages:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /chokidar/3.5.3:
@@ -1439,7 +1470,7 @@ packages:
     resolution: {integrity: sha512-I2hSBi7Vvs7BEuJDr5dDHfzb/Ruj3FyvFyh7KLilAjNQw3Be+xgqUBA2W6scVEcL0hL1dwPRtIqEPVUCKkSsyQ==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
       upper-case: 2.0.2
     dev: false
 
@@ -1531,11 +1562,11 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
-  /electron-to-chromium/1.4.317:
-    resolution: {integrity: sha512-JhCRm9v30FMNzQSsjl4kXaygU+qHBD0Yh7mKxyjmF0V8VwYVB6qpBRX28GyAucrM9wDCpSUctT6FpMUQxbyKuA==}
+  /electron-to-chromium/1.4.320:
+    resolution: {integrity: sha512-h70iRscrNluMZPVICXYl5SSB+rBKo22XfuIS1ER0OQxQZpKTnFpuS6coj7wY9M/3trv7OR88rRMOlKmRvDty7Q==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1631,19 +1662,19 @@ packages:
     resolution: {integrity: sha512-79ak0JxddO0utAXAQ5ccKhvs6vX2MGyHHMMsmZkBANrq3hXc1CHzvNPHOcvTsVMEPl5I+NT+RO4YKMGehOfSIg==}
     dev: false
 
-  /fastify-type-provider-zod/1.1.9_fastify@4.13.0+zod@3.20.6:
+  /fastify-type-provider-zod/1.1.9_fastify@4.14.0+zod@3.21.0:
     resolution: {integrity: sha512-Ztnu1ZWJEKJouZvdTyfgjuVqS+A4JLoCbWBvFqFhfnrg6YQvEvW+5cJvP98kNbuV5gjfpWmHSOTi3BpkidJPQg==}
     peerDependencies:
       fastify: ^4.0.0
       zod: ^3.14.2
     dependencies:
-      fastify: 4.13.0
-      zod: 3.20.6
-      zod-to-json-schema: 3.20.4_zod@3.20.6
+      fastify: 4.14.0
+      zod: 3.21.0
+      zod-to-json-schema: 3.20.4_zod@3.21.0
     dev: false
 
-  /fastify/4.13.0:
-    resolution: {integrity: sha512-p9ibdFWH3pZ7KPgmfHPKGUy2W4EWU2TEpwlcu58w4CwGyU3ARFfh2kwq6zpZ5W2ZGVbufi4tZbqHIHAlX/9Z/A==}
+  /fastify/4.14.0:
+    resolution: {integrity: sha512-oJSHlM/XbGdJpe2MKMJBsrvrkPDrHDZlAB9qzuUJIpnBtpDE394bzdFsH4KnsUI1e8zxzFl+GNBEXC64N/IPuw==}
     dependencies:
       '@fastify/ajv-compiler': 3.5.0
       '@fastify/error': 3.2.0
@@ -1830,7 +1861,7 @@ packages:
       graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /graphql/16.6.0:
@@ -1850,7 +1881,7 @@ packages:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /http-errors/2.0.0:
@@ -1946,7 +1977,7 @@ packages:
   /is-lower-case/2.0.2:
     resolution: {integrity: sha512-bVcMJy4X5Og6VZfdOZstSexlEy20Sr0k/p/b2IlQJlfdKAQuMpiv5w2Ccxb8sKdRUNAG1PnHVHjFSdRDVS6NlQ==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /is-number/7.0.0:
@@ -1974,7 +2005,7 @@ packages:
   /is-upper-case/2.0.2:
     resolution: {integrity: sha512-44pxmxAvnnAOwBg4tHPnkfvgjPwbc5QIsSstNU+YcJ1ovxVzCWpSGosPJOZh/a1tdl81fbgnLc9LLv+x2ywbPQ==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /is-windows/1.0.2:
@@ -2070,13 +2101,13 @@ packages:
   /lower-case-first/2.0.2:
     resolution: {integrity: sha512-EVm/rR94FJTZi3zefZ82fLWab+GX14LJN4HrWBcuo6Evmsl9hEfnqxgcHCKb9q+mNf6EVdsjx/qucYFIIB84pg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /lru-cache/5.1.1:
@@ -2101,7 +2132,22 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /mercurius-codegen/5.0.1_ip7hdpsvawckbwarjuwspen7hq:
+  /mercurius-auth/4.0.0:
+    resolution: {integrity: sha512-8tXJ+DoiEU8bkMUXeW6WZwkdc8laQiUAqgxt7alP6pcPrM9Wwkc43aJYeZiVngjMYnOj76j8Gug+Lhp55tG5rA==}
+    dependencies:
+      '@fastify/error': 3.2.0
+      fastify-plugin: 4.5.0
+      graphql: 16.6.0
+    dev: false
+
+  /mercurius-cache/4.0.0:
+    resolution: {integrity: sha512-ZtSSmpfpA49UcqFgs/2+6LIM4mIdA0WvwiOzENiwwmd7cQBPKF+eUbDz6wUxrVwzSk2Q8XXGcRFVcZt2fyU/LA==}
+    dependencies:
+      async-cache-dedupe: 1.10.0
+      fastify-plugin: 4.5.0
+    dev: false
+
+  /mercurius-codegen/5.0.1_zvtaexhrdrbkgyiw3e45iaw26e:
     resolution: {integrity: sha512-10LWWp/AVroKXHAKVas/oDE9KgvQNnLs6z64P9hC776eXCcB7PvFYMZiJ5ZgWXBVrbw49x0GXcLDRERmHMFADw==}
     peerDependencies:
       fastify: ^4.10.2
@@ -2119,7 +2165,7 @@ packages:
       '@graphql-tools/utils': 9.2.1_graphql@16.6.0
       '@graphql-typed-document-node/core': 3.1.2_graphql@16.6.0
       chokidar: 3.5.3
-      fastify: 4.13.0
+      fastify: 4.14.0
       graphql: 16.6.0
       mercurius: 12.2.0_graphql@16.6.0
       mkdirp: 1.0.4
@@ -2127,6 +2173,17 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: false
+
+  /mercurius-validation/4.0.0:
+    resolution: {integrity: sha512-PFkPNYRCC/etZcs0FnTPFS+ecNvqN+YU8ybb/6hYvEDGupQcCC5p0ietqKmFtM4MmI3sOLsQMQWO/DWWHWtLbA==}
+    dependencies:
+      '@fastify/error': 3.2.0
+      ajv: 8.12.0
+      ajv-errors: 3.0.0_ajv@8.12.0
+      ajv-formats: 2.1.1
+      fastify-plugin: 4.5.0
+      graphql: 16.6.0
     dev: false
 
   /mercurius/12.2.0_graphql@16.6.0:
@@ -2192,6 +2249,12 @@ packages:
     hasBin: true
     dev: false
 
+  /mnemonist/0.39.5:
+    resolution: {integrity: sha512-FPUtkhtJ0efmEFGpU14x7jGbTB+s18LrzRL2KgoWz9YvcY3cPomz8tih01GbHwnGk/OmkOKfqd/RAQoc8Lm7DQ==}
+    dependencies:
+      obliterator: 2.0.4
+    dev: false
+
   /mqemitter/5.0.0:
     resolution: {integrity: sha512-rqNRQhGgl0W/NV+Zrx0rpAUTZcSlAtivCVUmXBUPcFYt+AeDEpoJgy5eKlFWJP6xnatONL59WIFdV0W6niOMhw==}
     engines: {node: '>=10'}
@@ -2212,7 +2275,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /node-fetch/2.6.7:
@@ -2279,6 +2342,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /obliterator/2.0.4:
+    resolution: {integrity: sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==}
+    dev: false
+
   /on-exit-leak-free/2.1.0:
     resolution: {integrity: sha512-VuCaZZAjReZ3vUwgOB8LxAosIurDiAW0s13rI1YwmaP++jvcxP77AWoQvenZebpCA2m8WC1/EosPYPMjnRAp/w==}
     dev: false
@@ -2337,7 +2404,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /parse-filepath/1.0.2:
@@ -2353,14 +2420,14 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /path-case/3.0.4:
     resolution: {integrity: sha512-qO4qCFjXqVTrcbPt/hQfhTQ+VhFsqNKOPtytgNKkKxSoEp3XPUQ8ObFuePylOIok5gjn69ry8XiULxCwot3Wfg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /path-exists/3.0.0:
@@ -2394,6 +2461,26 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
     dev: false
+
+  /pg-int8/1.0.1:
+    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
+    engines: {node: '>=4.0.0'}
+    dev: true
+
+  /pg-protocol/1.6.0:
+    resolution: {integrity: sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==}
+    dev: true
+
+  /pg-types/2.2.0:
+    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
+    engines: {node: '>=4'}
+    dependencies:
+      pg-int8: 1.0.1
+      postgres-array: 2.0.0
+      postgres-bytea: 1.0.0
+      postgres-date: 1.0.7
+      postgres-interval: 1.2.0
+    dev: true
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
@@ -2437,6 +2524,28 @@ packages:
     dependencies:
       find-up: 3.0.0
     dev: false
+
+  /postgres-array/2.0.0:
+    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
+    engines: {node: '>=4'}
+    dev: true
+
+  /postgres-bytea/1.0.0:
+    resolution: {integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
+  /postgres-date/1.0.7:
+    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
+    engines: {node: '>=0.10.0'}
+    dev: true
+
+  /postgres-interval/1.2.0:
+    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      xtend: 4.0.2
+    dev: true
 
   /prettier/2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
@@ -2615,7 +2724,7 @@ packages:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
       upper-case-first: 2.0.2
     dev: false
 
@@ -2661,7 +2770,7 @@ packages:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /sonic-boom/3.2.1:
@@ -2678,7 +2787,7 @@ packages:
   /sponge-case/1.0.1:
     resolution: {integrity: sha512-dblb9Et4DAtiZ5YSUZHLl4XhH4uK80GhAZrVXdN4O2P4gQ40Wa5UIOPUHlA/nFd2PLblBZWUioLMMAVrgpoYcA==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /statuses/2.0.1:
@@ -2727,7 +2836,7 @@ packages:
   /swap-case/2.0.2:
     resolution: {integrity: sha512-kc6S2YS/2yXbtkSMunBtKdah4VFETZ8Oh6ONSmSd9bRxhqTrtARUCBUiWXH3xVPpvR7tz2CSnkuXVE42EcGnMw==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /thread-stream/2.3.0:
@@ -2744,7 +2853,7 @@ packages:
   /title-case/3.0.3:
     resolution: {integrity: sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /to-fast-properties/2.0.0:
@@ -2774,7 +2883,7 @@ packages:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
     dev: false
 
-  /ts-node/10.9.1_2cogyjchoknpkalymtikkc6nay:
+  /ts-node/10.9.1_alpjt73dvgv6kni625hu7f2l4m:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -2793,7 +2902,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.14.5
+      '@types/node': 18.14.6
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -2860,13 +2969,13 @@ packages:
   /upper-case-first/2.0.2:
     resolution: {integrity: sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /upper-case/2.0.2:
     resolution: {integrity: sha512-KgdgDGJt2TpuwBUIjgG6lzw2GWFRCW9Qkfkiv0DxqHHLYJHmtmdUIKcZd8rHgFSjopVTlw6ggzCm1b8MFQwikg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.4.1
     dev: false
 
   /uri-js/4.4.1:
@@ -2928,7 +3037,6 @@ packages:
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
-    dev: false
 
   /y18n/4.0.3:
     resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
@@ -2982,14 +3090,14 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /zod-to-json-schema/3.20.4_zod@3.20.6:
+  /zod-to-json-schema/3.20.4_zod@3.21.0:
     resolution: {integrity: sha512-Un9+kInJ2Zt63n6Z7mLqBifzzPcOyX+b+Exuzf7L1+xqck9Q2EPByyTRduV3kmSPaXaRer1JCsucubpgL1fipg==}
     peerDependencies:
       zod: ^3.20.0
     dependencies:
-      zod: 3.20.6
+      zod: 3.21.0
     dev: false
 
-  /zod/3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+  /zod/3.21.0:
+    resolution: {integrity: sha512-UYdykTcVxB6lfdyLzAqLyyYAlOcpoluECvjsdoaqfQmz9p+3LRaIqYcNiL/J2kFYp66fBM8wwBvIGVEjq7KtZw==}
     dev: false

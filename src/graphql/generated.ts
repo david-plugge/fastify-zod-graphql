@@ -63,6 +63,12 @@ export type CreateUserInput = {
     lastname: Scalars['String'];
 };
 
+export enum Role {
+    ADMIN = 'ADMIN',
+    USER = 'USER',
+    UNKNOWN = 'UNKNOWN',
+}
+
 export type Mutation = {
     __typename?: 'Mutation';
     createUser: User;
@@ -200,8 +206,10 @@ export type ResolversTypes = {
     CreatePostInput: CreatePostInput;
     User: ResolverTypeWrapper<User>;
     CreateUserInput: CreateUserInput;
+    Role: Role;
     Mutation: ResolverTypeWrapper<{}>;
     Query: ResolverTypeWrapper<{}>;
+    Int: ResolverTypeWrapper<Scalars['Int']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -215,7 +223,46 @@ export type ResolversParentTypes = {
     CreateUserInput: CreateUserInput;
     Mutation: {};
     Query: {};
+    Int: Scalars['Int'];
 };
+
+export type constraintDirectiveArgs = {
+    maximum?: Maybe<Scalars['Int']>;
+    minimum?: Maybe<Scalars['Int']>;
+    exclusiveMaximum?: Maybe<Scalars['Int']>;
+    exclusiveMinimum?: Maybe<Scalars['Int']>;
+    multipleOf?: Maybe<Scalars['Int']>;
+    maxLength?: Maybe<Scalars['Int']>;
+    minLength?: Maybe<Scalars['Int']>;
+    pattern?: Maybe<Scalars['String']>;
+    maxProperties?: Maybe<Scalars['Int']>;
+    minProperties?: Maybe<Scalars['Int']>;
+    required?: Maybe<Array<Scalars['String']>>;
+    maxItems?: Maybe<Scalars['Int']>;
+    minItems?: Maybe<Scalars['Int']>;
+    uniqueItems?: Maybe<Scalars['Boolean']>;
+    type?: Maybe<Array<Scalars['String']>>;
+    format?: Maybe<Scalars['String']>;
+    schema?: Maybe<Scalars['String']>;
+};
+
+export type constraintDirectiveResolver<
+    Result,
+    Parent,
+    ContextType = MercuriusContext,
+    Args = constraintDirectiveArgs,
+> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type authDirectiveArgs = {
+    required?: Maybe<Role>;
+};
+
+export type authDirectiveResolver<
+    Result,
+    Parent,
+    ContextType = MercuriusContext,
+    Args = authDirectiveArgs,
+> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type PostResolvers<
     ContextType = MercuriusContext,
@@ -296,6 +343,11 @@ export type Resolvers<ContextType = MercuriusContext> = {
     User?: UserResolvers<ContextType>;
     Mutation?: MutationResolvers<ContextType>;
     Query?: QueryResolvers<ContextType>;
+};
+
+export type DirectiveResolvers<ContextType = MercuriusContext> = {
+    constraint?: constraintDirectiveResolver<any, any, ContextType>;
+    auth?: authDirectiveResolver<any, any, ContextType>;
 };
 
 export type Loader<TReturn, TObj, TParams, TContext> = (

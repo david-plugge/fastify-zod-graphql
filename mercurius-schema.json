@@ -1,6 +1,7 @@
 [
     "type Post {\n  id: ID!\n  title: String!\n  body: String!\n  published: Boolean!\n  owner: User!\n}\n\ninput CreatePostInput {\n  title: String!\n  body: String!\n  published: Boolean!\n  ownerId: String!\n}",
     "type User {\n  id: ID!\n  username: String!\n  firstname: String!\n  lastname: String!\n  posts: [Post]\n}\n\ninput CreateUserInput {\n  username: String!\n  firstname: String!\n  lastname: String!\n}",
+    "directive @auth(required: Role = ADMIN) on OBJECT | FIELD_DEFINITION\n\nenum Role {\n  ADMIN\n  USER\n  UNKNOWN\n}",
     "type Mutation {\n  createUser(data: CreateUserInput!): User!\n  createPost(data: CreatePostInput!): Post!\n}",
     "type Query {\n  user(id: ID!): User!\n  users: [User]!\n  post(id: ID!): Post!\n  posts: [Post]!\n}"
 ]
