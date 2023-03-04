@@ -5,7 +5,9 @@ export function listPosts() {
     return db.post.findMany();
 }
 
-export function createPost(createPostInput: Prisma.PostCreateInput) {
+export function createPost(
+    createPostInput: Prisma.PostCreateWithoutOwnerInput & { ownerId: string },
+) {
     return db.post.create({
         data: createPostInput,
     });

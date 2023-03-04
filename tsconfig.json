@@ -8,7 +8,9 @@
         "module": "CommonJS",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "incremental": true,
+        "skipLibCheck": true
     },
     "include": ["src"],
     "exclude": ["node_modules"]

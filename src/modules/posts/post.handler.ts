@@ -19,7 +19,7 @@ export const createPostHandler: App.RouteHandler<
             id: post.id,
             title: post.title,
             body: post.body,
-            owner: post.ownerId,
+            ownerId: post.ownerId,
         };
     } catch (err) {
         reply.statusCode = 400;

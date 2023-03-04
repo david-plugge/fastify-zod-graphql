@@ -19,7 +19,7 @@ export const createPostSchema = {
         title: z.string(),
         body: z.string(),
         published: z.boolean().default(false),
-        owner: z.string(),
+        ownerId: z.string(),
     }),
     response: {
         200: z.object({
@@ -27,7 +27,7 @@ export const createPostSchema = {
             title: z.string(),
             body: z.string(),
             published: z.boolean(),
-            owner: z.string(),
+            ownerId: z.string(),
         }),
         400: z.object({
             error: z.string(),

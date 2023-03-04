@@ -8,8 +8,16 @@ declare module 'fastify' {
     }
 }
 
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv {
+            NODE_ENV?: 'development' | 'production' | (string & {});
+        }
+    }
+}
+
 export default fastifyPlugin(async (app) => {
     app.env = {
-        dev: true,
+        dev: process.env.NODE_ENV === 'development',
     };
 });

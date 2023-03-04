@@ -1,4 +1,4 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyRequest } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
 import { buildSchema } from 'graphql';
 import mercurius from 'mercurius';
@@ -12,7 +12,7 @@ import mercuriusCache from 'mercurius-cache';
 import mercuriusValidation from 'mercurius-validation';
 import resolvers from '../graphql/resolvers';
 
-const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
+const buildContext = async (req: FastifyRequest) => {
     return {
         authorization: req.headers.authorization,
         db: req.server.db,
@@ -68,7 +68,7 @@ export default fastifyPlugin(async (app) => {
                 identity: context.reply.request.headers['x-user'],
             };
         },
-        async applyPolicy(authDirectiveAST, parent, args, context, info) {
+        async applyPolicy(authDirectiveAST, parent, args, context /*, info */) {
             return (context.auth ??= {}).identity === 'admin';
         },
         authDirective: 'auth',
